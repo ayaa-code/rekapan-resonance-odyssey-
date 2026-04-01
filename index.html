@@ -1066,6 +1066,10 @@
                 <div class="location-label">Lokasi</div>
                 <div id="current-loc">-</div>
             </div>
+            <div class="location-info">
+                <div class="location-label">Putaran</div>
+                <div id="current-round">1 / 3</div>
+            </div>
         </div>
         <div class="stamina-info">
             <div class="stamina-label">Stamina</div>
@@ -1160,6 +1164,9 @@
             15: { q: "Kesenian Aceh yang memadukan vokal, tepuk tangan, dan bantal kecil sebagai perkusi disebut?", a: ["Didong", "Saman", "Seudati", "Rapa'i"], correct: 0 }
         };
 
+        const MAX_ROUNDS = 3;
+        const MAX_QUESTIONS = 38;
+
         const gridCoords = [
             [1,1], [1,2], [1,3], [1,4], [1,5], 
             [2,5], [3,5], [4,5], [5,5], 
@@ -1175,7 +1182,9 @@
             charId: '',
             active: false,
             isMoving: false,
-            visited: new Set(),
+            round: 1,
+            answeredCount: 0,
+            visitedThisRound: new Set([0]),
             currentQuiz: null,
             autoMode: false,
             autoPaused: false,
@@ -1264,7 +1273,9 @@
         function finalStart(charId) {
             state.charId = charId;
             state.active = true;
-            state.visited.add(0);
+            state.round = 1;
+            state.answeredCount = 0;
+            state.visitedThisRound = new Set([0]);
             
             document.getElementById('screen-char').classList.add('hidden');
             document.getElementById('top-status').classList.remove('hidden');
@@ -1316,11 +1327,40 @@
             
             document.getElementById('life-icons').innerText = "❤️".repeat(Math.max(0, state.lives));
             document.getElementById('current-loc').innerText = cityData[state.idx].name;
+            document.getElementById('current-round').innerText = `${state.round} / ${MAX_ROUNDS}`;
             
             document.querySelectorAll('.tile').forEach(t => t.style.boxShadow = '');
             const currentTile = document.getElementById(`tile-${state.idx}`);
             if (currentTile) {
                 currentTile.style.boxShadow = '0 0 15px #ec4899, inset 0 0 15px rgba(236, 72, 153, 0.3)';
+            }
+        }
+
+        function maybeAdvanceRound() {
+            if (state.idx === 0 && state.round < MAX_ROUNDS) {
+                state.round += 1;
+                state.visitedThisRound = new Set([0]);
+            }
+        }
+
+        function handleArrival() {
+            if (state.idx === 0) {
+                maybeAdvanceRound();
+                state.isMoving = false;
+                return;
+            }
+
+            if (state.answeredCount >= MAX_QUESTIONS) {
+                state.isMoving = false;
+                finish(true);
+                return;
+            }
+
+            if (!state.visitedThisRound.has(state.idx) && cityQuestions[state.idx]) {
+                state.visitedThisRound.add(state.idx);
+                showQuiz();
+            } else {
+                state.isMoving = false;
             }
         }
 
@@ -1378,12 +1418,7 @@
             playTravelMusic(state.idx);
 
             setTimeout(() => {
-                if (!state.visited.has(state.idx)) {
-                    state.visited.add(state.idx);
-                    showQuiz();
-                } else {
-                    state.isMoving = false;
-                }
+                handleArrival();
             }, TRAVEL_DURATION);
         }
 
@@ -1434,6 +1469,7 @@
                 correct: correct,
                 timestamp: new Date().toISOString()
             });
+            state.answeredCount += 1;
             
             const feedbackBox = document.getElementById('quiz-feedback-box');
             const icon = document.getElementById('feedback-icon');
@@ -1468,7 +1504,7 @@
                 state.isMoving = false;
                 if (state.lives <= 0) {
                     finish(false);
-                } else if (state.visited.size === cityData.length) {
+                } else if (state.answeredCount >= MAX_QUESTIONS) {
                     finish(true);
                 }
                 updateTokenPos();
@@ -1594,17 +1630,11 @@
             playTravelMusic(state.idx);
 
             state.autoTimer = setTimeout(() => {
-                if (!state.visited.has(state.idx)) {
-                    state.visited.add(state.idx);
-                    state.autoPaused = true;
-                    showQuiz();
-                } else {
-                    state.isMoving = false;
-                    if (state.autoMode && !state.autoPaused && state.idx !== lastIdx) {
-                        state.autoTimer = setTimeout(autoStep, 300);
-                    } else if (state.idx === lastIdx) {
-                        stopAuto();
-                    }
+                handleArrival();
+                if (!state.isMoving && state.autoMode && !state.autoPaused && state.idx !== lastIdx) {
+                    state.autoTimer = setTimeout(autoStep, 300);
+                } else if (!state.isMoving && state.idx === lastIdx) {
+                    stopAuto();
                 }
             }, TRAVEL_DURATION);
         }
