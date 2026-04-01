@@ -1110,6 +1110,7 @@
         <div class="content-card">
             <div id="end-title"></div>
             <div id="end-message"></div>
+            <div id="end-score" style="margin-top: 18px; font-size: 1rem; font-weight: 700; color: #2c5f7f;"></div>
             <button class="btn-gold" onclick="location.reload()">MAIN LAGI 🔄</button>
         </div>
     </div>
@@ -1518,6 +1519,9 @@
         function finish(win) {
             state.active = false;
             const overlay = document.getElementById('end-overlay');
+            const scoreText = document.getElementById('end-score');
+            const correctCount = state.answers.filter(a => a.correct).length;
+            const wrongCount = state.answers.filter(a => !a.correct).length;
             
             if (win) {
                 document.getElementById('end-title').innerText = "🏆 MAESTRO NUSANTARA";
@@ -1528,6 +1532,8 @@
                 document.getElementById('end-message').innerText = "Stamina habis. Pelajari lagi kekayaan musik Nusantara dan coba lagi!";
                 document.getElementById('end-title').style.color = '#dc2626';
             }
+            
+            scoreText.innerText = `Skor kamu: ${correctCount} benar, ${wrongCount} salah.`;
             
             // Kirim data ke spreadsheet
             sendGameDataToSpreadsheet(win);
