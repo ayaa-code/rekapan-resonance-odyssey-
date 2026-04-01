@@ -276,8 +276,8 @@
 
         .monopoly-board {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(5, 1fr);
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(11, 1fr);
             gap: clamp(4px, 1vw, 6px);
             background: #E8F4F8;
             padding: clamp(8px, 2vw, 12px);
@@ -557,7 +557,7 @@
         }
 
         .center-area {
-            grid-area: 2 / 2 / 5 / 5;
+            grid-area: 2 / 2 / 11 / 10;
             background: linear-gradient(135deg, #D4EEF7 0%, #A8D8EA 100%);
             border: clamp(2px, 0.5vw, 4px) double #2C5F7F;
             border-radius: 8px;
@@ -1129,18 +1129,40 @@
             { name: "Jawa Barat", side: "side-top", music: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/b7a423f967be69ca19239d650b05b841ddcb5158/Manuk%20Dadali%20(Angklung%20version%20cover)%20Arr%20(mp3cut.net).mp3" },
             { name: "Jawa Tengah", side: "side-top", music: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/b7a423f967be69ca19239d650b05b841ddcb5158/GAMELAN.mp3" },
             { name: "DI Yogyakarta", side: "side-top", image: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/0b044c022fd512bf01f22ef1dc2474e0893f62f7/JOGJA.png", music: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/0b044c022fd512bf01f22ef1dc2474e0893f62f7/SITAR.mp3" },
-            { name: "Bali", side: "corner", image: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/e57ec7031a0fdba39923804793d4528ed2617d21/BALI.png", music: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/e57ec7031a0fdba39923804793d4528ed2617d21/Rindik%2C%20the%20Balinese%20musical%20instrument.mp3" },
-            { name: "Sumatra Barat", side: "side-right", music: "" },
-            { name: "Aceh", side: "side-right", image: "https://raw.githubusercontent.com/AYAA-lab/resonance-odyssey/0e31389538a02c42684025cbc04d8fb04add8b76/ACEH.png", music: "https://raw.githubusercontent.com/AYAA-lab/Game-Resonance-Odyssey/main/freesound_community-seruling-sunda-34162.mp3" },
-            { name: "Sumatera Utara", side: "side-right", music: "" },
-            { name: "Riau", side: "corner", music: "" },
-            { name: "Kalimantan Timur", side: "side-bottom", music: "" },
-            { name: "Kalimantan Selatan", side: "side-bottom", music: "" },
-            { name: "Sulawesi Selatan", side: "side-bottom", music: "" },
-            { name: "Sulawesi Utara", side: "corner", music: "" },
-            { name: "NTB", side: "side-left", music: "" },
-            { name: "NTT", side: "side-left", music: "" },
-            { name: "Papua", side: "side-left", image: "https://raw.githubusercontent.com/AYAA-lab/resonance-odyssey/0e31389538a02c42684025cbc04d8fb04add8b76/PAPUA.png", music: "https://raw.githubusercontent.com/AYAA-lab/Game-Resonance-Odyssey/main/freesound_community-seruling-sunda-34162.mp3" }
+            { name: "Bali", side: "side-top", image: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/e57ec7031a0fdba39923804793d4528ed2617d21/BALI.png", music: "https://raw.githubusercontent.com/riyanarahman320/c2FraXQgdGF1dSwgZ2EgYWRpbCByYXNhbnlh/e57ec7031a0fdba39923804793d4528ed2617d21/Rindik%2C%20the%20Balinese%20musical%20instrument.mp3" },
+            { name: "Sumatra Barat", side: "side-top", music: "" },
+            { name: "Aceh", side: "side-top", image: "https://raw.githubusercontent.com/AYAA-lab/resonance-odyssey/0e31389538a02c42684025cbc04d8fb04add8b76/ACEH.png", music: "https://raw.githubusercontent.com/AYAA-lab/Game-Resonance-Odyssey/main/freesound_community-seruling-sunda-34162.mp3" },
+            { name: "Sumatera Utara", side: "side-top", music: "" },
+            { name: "Riau", side: "side-top", music: "" },
+            { name: "Kalimantan Timur", side: "corner", music: "" },
+            { name: "Kalimantan Selatan", side: "side-right", music: "" },
+            { name: "Sulawesi Selatan", side: "side-right", music: "" },
+            { name: "Sulawesi Utara", side: "side-right", music: "" },
+            { name: "NTB", side: "side-right", music: "" },
+            { name: "NTT", side: "side-right", music: "" },
+            { name: "Papua", side: "side-right", image: "https://raw.githubusercontent.com/AYAA-lab/resonance-odyssey/0e31389538a02c42684025cbc04d8fb04add8b76/PAPUA.png", music: "https://raw.githubusercontent.com/AYAA-lab/Game-Resonance-Odyssey/main/freesound_community-seruling-sunda-34162.mp3" },
+            { name: "Lampung", side: "side-right", music: "" },
+            { name: "Banten", side: "side-right", music: "" },
+            { name: "DKI Jakarta", side: "side-right", music: "" },
+            { name: "Jawa Timur", side: "corner", music: "" },
+            { name: "Kalimantan Barat", side: "side-bottom", music: "" },
+            { name: "Kalimantan Tengah", side: "side-bottom", music: "" },
+            { name: "Kalimantan Utara", side: "side-bottom", music: "" },
+            { name: "Sulawesi Tengah", side: "side-bottom", music: "" },
+            { name: "Sulawesi Tenggara", side: "side-bottom", music: "" },
+            { name: "Gorontalo", side: "side-bottom", music: "" },
+            { name: "Maluku", side: "side-bottom", music: "" },
+            { name: "Maluku Utara", side: "side-bottom", music: "" },
+            { name: "Papua Barat", side: "side-bottom", music: "" },
+            { name: "Bengkulu", side: "side-left", music: "" },
+            { name: "Jambi", side: "side-left", music: "" },
+            { name: "Bangka Belitung", side: "side-left", music: "" },
+            { name: "Kepulauan Riau", side: "side-left", music: "" },
+            { name: "Sulawesi Barat", side: "side-left", music: "" },
+            { name: "Papua Selatan", side: "side-left", music: "" },
+            { name: "Papua Tengah", side: "side-left", music: "" },
+            { name: "Papua Pegunungan", side: "side-left", music: "" },
+            { name: "Papua Barat Daya", side: "side-left", music: "" }
         ];
 
         const cityQuestions = {
@@ -1162,11 +1184,14 @@
         };
 
         const gridCoords = [
-            [1,1], [1,2], [1,3], [1,4], [1,5], 
-            [2,5], [3,5], [4,5], [5,5], 
-            [5,4], [5,3], [5,2], [5,1], 
-            [4,1], [3,1], [2,1]
+            [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10],
+            [2,10], [3,10], [4,10], [5,10], [6,10], [7,10], [8,10], [9,10], [10,10], [11,10],
+            [11,9], [11,8], [11,7], [11,6], [11,5], [11,4], [11,3], [11,2], [11,1],
+            [10,1], [9,1], [8,1], [7,1], [6,1], [5,1], [4,1], [3,1], [2,1]
         ];
+
+        const BOARD_COLS = 10;
+        const BOARD_ROWS = 11;
 
         let state = {
             playerName: '',
@@ -1309,8 +1334,8 @@
             const token = document.getElementById('player-token');
             const coord = gridCoords[state.idx];
             
-            const centerX = (coord[1] - 0.5) * 20;
-            const centerY = (coord[0] - 0.5) * 20;
+            const centerX = (coord[1] - 0.5) * (100 / BOARD_COLS);
+            const centerY = (coord[0] - 0.5) * (100 / BOARD_ROWS);
             
             token.style.left = `${centerX}%`;
             token.style.top = `${centerY}%`;
@@ -1327,51 +1352,13 @@
 
         function handleMove(dir) {
             if (!state.active || state.isMoving) return;
-            let move = 0;
-            const i = state.idx;
+            if (dir !== 'right') return;
 
-            // Top row (0-3): normal horizontal movement
-            if (i >= 0 && i < 4) {
-                if (dir === 'right') move = 1;
-                if (dir === 'left') move = -1;
-            }
-            // Corner: Jogja (index 4) - top right corner
-            // Bisa gerak LEFT (ke Cirebon) atau DOWN (ke Solo)
-            else if (i === 4) {
-                if (dir === 'left') move = -1;   // Ke Cirebon (index 3)
-                if (dir === 'down') move = 1;    // Ke Solo (index 5)
-            }
-            // Right side (5-7): normal vertical movement
-            else if (i > 4 && i < 8) {
-                if (dir === 'down') move = 1;
-                if (dir === 'up') move = -1;
-            }
-            // Corner: Lombok (index 8) - right bottom corner
-            // Bisa gerak UP (ke Bali) atau LEFT (ke Makassar)
-            else if (i === 8) {
-                if (dir === 'up') move = -1;    // Ke Bali (index 7)
-                if (dir === 'left') move = 1;   // Ke Makassar (index 9)
-            }
-            // Bottom row (9-11): horizontal movement (reversed)
-            else if (i > 8 && i < 12) {
-                if (dir === 'left') move = 1;
-                if (dir === 'right') move = -1;
-            }
-            // Corner: Ternate (index 12) - bottom left corner
-            // Bisa gerak RIGHT (ke Ambon) atau UP (ke Papua)
-            else if (i === 12) {
-                if (dir === 'right') move = -1;  // Ke Ambon (index 11)
-                if (dir === 'up') move = 1;      // Ke Papua (index 13)
-            }
-            // Left side (13-15): vertical movement (reversed)
-            else if (i >= 13) {
-                if (dir === 'up') move = 1;
-                if (dir === 'down') move = -1;
-            }
+            const nextIdx = state.idx + 1;
+            if (nextIdx >= cityData.length) return;
 
-            if (move === 0) return;
             state.isMoving = true;
-            state.idx = (state.idx + move + 16) % 16;
+            state.idx = nextIdx;
             updateTokenPos();
             updateControlButtons();
 
@@ -1592,7 +1579,7 @@
             }
 
             state.isMoving = true;
-            state.idx = (state.idx + 1) % cityData.length;
+            state.idx = state.idx + 1;
             updateTokenPos();
             updateControlButtons();
 
@@ -1618,10 +1605,8 @@
         function updateControlButtons() {
             const btn = document.getElementById('btn-right');
             if (!btn) return;
-            const i = state.idx;
-            // right is valid on top row and bottom row
-            const canRight = (i >= 0 && i <= 4) || (i >= 9 && i <= 12);
-            btn.disabled = !state.active || state.isMoving || !canRight;
+            const canAdvance = state.idx < cityData.length - 1;
+            btn.disabled = !state.active || state.isMoving || !canAdvance;
         }
 
         window.addEventListener('keydown', (e) => {
