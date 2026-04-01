@@ -1312,8 +1312,6 @@
             const defaultImage = 'https://raw.githubusercontent.com/AYAA-lab/resonance-odyssey/0e31389538a02c42684025cbc04d8fb04add8b76/JAKARTA.png';
             
             cityData.forEach((city, i) => {
-                if (i === 0) return;
-                
                     const tile = document.createElement('div');
                     tile.className = `tile ${city.side === 'corner' ? 'corner-tile' : city.side}`;
                     tile.id = `tile-${i}`;
