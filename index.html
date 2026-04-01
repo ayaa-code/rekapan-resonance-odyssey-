@@ -14,19 +14,38 @@
         }
 
         :root {
-            --wood: #FFB6D9;
-            --paper: #F0F8FF;
-            --gold: #FFCB99;
+            --bg: #E6F7FF;
+            --surface: #F0F8FF;
+            --surface-strong: #D4EEF7;
+            --surface-soft: #A8D8EA;
+            --primary: #5EB3D6;
+            --primary-dark: #2C5F7F;
+            --accent: #FFB6D9;
+            --accent-soft: #FFCB99;
+            --border: #B8D4E8;
+            --text: #2C5F7F;
+            --muted: #667286;
+            --shadow: 0 16px 35px rgba(0,0,0,0.12);
+            --radius: 18px;
+            --space-xxs: 4px;
+            --space-xs: 8px;
+            --space-sm: 12px;
+            --space-md: 18px;
+            --space-lg: 24px;
+            --space-xl: 32px;
         }
 
         body {
-            background-color: #E6F7FF;
+            min-height: 100vh;
+            background-color: var(--bg);
             font-family: 'Georgia', serif;
-            color: #5B6D82;
-            overflow: hidden;
-            height: 100vh;
+            color: var(--text);
             display: flex;
             flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
@@ -52,18 +71,56 @@
         }
 
         .content-card {
-            background: var(--paper);
-            border: clamp(5px, 1.5vw, 8px) solid var(--wood);
-            border-radius: clamp(12px, 3vw, 20px);
-            padding: clamp(15px, 4vw, 40px);
-            max-width: clamp(280px, 90vw, 600px);
-            width: clamp(280px, 90vw, 90%);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            width: min(640px, 90vw);
+            max-width: 100%;
             text-align: center;
-            box-shadow: 0 0 clamp(30px, 8vw, 50px) rgba(0,0,0,0.5);
+            box-shadow: var(--shadow);
             position: relative;
             max-height: 85vh;
             overflow-y: auto;
-            aspect-ratio: auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .overlay-panel {
+            width: min(100%, 920px);
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .form-field {
+            width: 100%;
+            max-width: 420px;
+            margin-inline: auto;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: Georgia, serif;
+            color: var(--text);
+            background: #fff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(126, 200, 227, 0.18);
+        }
+
+        .end-score {
+            margin-top: var(--space-md);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
         }
 
         .btn-gold {
@@ -169,15 +226,17 @@
         }
 
         .status-bar {
-            background: var(--paper);
-            border-bottom: 5px solid var(--wood);
-            padding: clamp(8px, 2vw, 12px) clamp(10px, 3vw, 30px);
+            width: min(1200px, 100%);
+            margin-inline: auto;
+            background: var(--surface);
+            border-bottom: 3px solid var(--accent-soft);
+            padding: var(--space-sm) var(--space-lg);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 40;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: var(--space-sm);
             min-height: auto;
         }
 
@@ -266,10 +325,13 @@
 
         .game-main {
             flex-grow: 1;
+            width: min(1320px, 100%);
+            margin-inline: auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: clamp(8px, 2vw, 20px);
+            padding: var(--space-lg);
+            gap: var(--space-lg);
             background: linear-gradient(135deg, #A8D8EA 0%, #FFD5B0 50%, #FFB6D9 100%);
             position: relative;
         }
@@ -1023,8 +1085,8 @@
         <div class="content-card">
             <h1>RESONANCE ODYSSEY</h1>
             <p>Selamat Datang, Penjelajah!</p>
-            <input type="text" id="input-player-name" placeholder="Ketik namamu di sini...">
-            <input type="text" id="input-school-name" placeholder="Ketik nama sekolahmu di sini..." style="margin-top: 10px;">
+            <input type="text" id="input-player-name" class="form-field" placeholder="Ketik namamu di sini...">
+            <input type="text" id="input-school-name" class="form-field" placeholder="Ketik nama sekolahmu di sini...">
             <button class="btn-gold" onclick="showRules()">START GAME</button>
         </div>
     </div>
@@ -1046,7 +1108,7 @@
 
     <!-- SCREEN 3: Pilih Karakter -->
     <div id="screen-char" class="screen-overlay hidden">
-        <div style="text-align: center; width: 100%; max-width: clamp(500px, 95vw, 1000px);">
+        <div class="overlay-panel">
             <h1 style="color: #fcd34d;">PILIH AVATARMU</h1>
             <div class="char-grid" id="selection-grid"></div>
         </div>
@@ -1110,7 +1172,7 @@
         <div class="content-card">
             <div id="end-title"></div>
             <div id="end-message"></div>
-            <div id="end-score" style="margin-top: 18px; font-size: 1rem; font-weight: 700; color: #2c5f7f;"></div>
+            <div id="end-score" class="end-score"></div>
             <button class="btn-gold" onclick="location.reload()">MAIN LAGI 🔄</button>
         </div>
     </div>
